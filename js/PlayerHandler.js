@@ -192,15 +192,13 @@ class PlayerHandler {
       const compare = bot.compareRadius(target);
       // perseguir
       if (compare > 0) {
-        if (bot.centerX +50 > target.centerX) directionX = -directionX; // to left
-        if (bot.centerY +50 > target.centerY) directionY = -directionY; // to top
+        if (bot.centerX > target.centerX) directionX = -directionX; // to left
+        if (bot.centerY > target.centerY) directionY = -directionY; // to top
         // fugir
       } else if (compare < 0) {
         // obs: melhorar comportamento quando o bot está encurralado
-        if (bot.centerX < target.centerX)
-          directionX = -directionX; // to left
-        if (bot.centerY < target.centerY)
-          directionY = -directionY; // to top
+        if (bot.centerX + 50 < target.centerX) directionX = -directionX; // to left
+        if (bot.centerY + 50 < target.centerY) directionY = -directionY; // to top
       }
     } // sem alvo, foge para o centro do jogo
     else {
