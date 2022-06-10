@@ -13,7 +13,9 @@ class Player extends Circle {
     this.id = id;
     this.name = name;
     this.isHuman = isHuman;
-    this.speedBoost = 0;
+    this.speedBoost = this.isHuman
+      ? _randomNumberBetween(MIN_SPEED / 10, MAX_SPEED / 10) // aumento de velocidade do bot
+      : 0;
   }
 
   /** Retorna a velocidade do jogador */
@@ -44,9 +46,9 @@ class Player extends Circle {
     this.radius += target?.radius / 4;
   }
 
-  /** Subtrai o diâmetro da armadilha do raio do jogador e 
+  /** Subtrai o diâmetro da armadilha do raio do jogador e
    * adiciona bônus de velocidade igual a 1/50 do raio da armadilha.
-  */
+   */
   absorbTrap(trap) {
     this.radius -= trap?.diameter;
     this.speedBoost += trap?.radius / 50;
